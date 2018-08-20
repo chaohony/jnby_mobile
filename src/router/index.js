@@ -9,11 +9,8 @@ import Contact from '../page/contact.vue'
 import CAMPAIGN18FW from '../page/campaign/campaign-18fw.vue'
 import IsThatYou from '../page/campaign/isThatYou.vue'
 import ParentChildClub from '../page/projects/parent-child-club.vue'
-import Different from '../page/projects/different.vue'
-import IsThatYou2 from '../page/projects/is-that-you.vue'
 import AW2018 from '../page/collection/AW2018.vue'
 import SS2018 from '../page/collection/SS2018.vue'
-import AW2017 from '../page/collection/AW2017.vue'
 import Looks from '../page/collection/looks.vue'
 import Shows from '../page/collection/shows.vue'
 import Video from '../page/collection/videos.vue'
@@ -21,144 +18,118 @@ import Video from '../page/collection/videos.vue'
 Vue.use(Router)
 
 export default new Router({
-    routes: [
+  routes: [
+    {
+      path: '/',
+      component: Index,
+      hidden: true,
+      name: 'index',
+      redirect: '/campaign/18fw',
+      children: [
         {
-            path: '/',
-            component: Index,
-            hidden: true,
-            name: 'index',
-            redirect: '/campaign/18fw',
-            children: [
-                {
-                    path: '/campaign',
-                    component: Campaign,
-                    name: 'CAMPAIGN',
-                    leaf: true,
-                    children: [
-                        {
-                            path: '/campaign/18fw',
-                            component: CAMPAIGN18FW,
-                            name: '18fw'
-                        },
-                        {
-                            path: '/campaign/is-that-you',
-                            component: IsThatYou,
-                            name: 'IS THAT YOU'
+          path: '/campaign',
+          component: Campaign,
+          name: 'CAMPAIGN',
+          leaf: true,
+          children: [
+            {
+              path: '/campaign/18fw',
+              component: CAMPAIGN18FW,
+              name: '-18FW'
+            },
+            {
+              path: '/campaign/18ss',
+              component: IsThatYou,
+              name: '-18SS'
 
-                        }
-                    ]
-                },
-                {
-                    path: '/collection',
-                    component: Collection,
-                    name: 'COLLECTION',
-                    leaf: true,
-                    children: [
-                        {
-                            path: '/collection/2018AW',
-                            component: AW2018,
-                            name: '2018AW',
-                            leaf: true,
-                            children: [
-                                {
-                                    path: '/collection/2018AW/looks',
-                                    component: Looks,
-                                    name: 'Looks'
-                                },
-                                {
-                                    path: '/collection/2018AW/shows',
-                                    component: Shows,
-                                    name: 'Shows'
-                                },
-                                {
-                                    path: '/collection/2018AW/video',
-                                    component: Video,
-                                    name: 'Video'
-                                }
-                            ]
-                        },
-                        {
-                            path: '/collection/2018SS',
-                            component: SS2018,
-                            name: '2018SS',
-                            leaf: true,
-                            children: [
-                                {
-                                    path: '/collection/2018SS/looks',
-                                    component: Looks,
-                                    name: 'Looks'
-                                },
-                                {
-                                    path: '/collection/2018SS/shows',
-                                    component: Shows,
-                                    name: 'Shows'
-                                },
-                                {
-                                    path: '/collection/2018SS/video',
-                                    component: Video,
-                                    name: 'Video'
-                                }
-                            ]
-                        },
-                        {
-                            path: '/collection/2017AW',
-                            component: AW2017,
-                            name: '2017AW',
-                            leaf: true,
-                            children: [
-                                {
-                                    path: '/collection/2017AW/looks',
-                                    component: Looks,
-                                    name: 'Looks'
-                                },
-                                {
-                                    path: '/collection/2017AW/shows',
-                                    component: Shows,
-                                    name: 'Shows'
-                                },
-                                {
-                                    path: '/collection/2017AW/video',
-                                    component: Video,
-                                    name: 'Video'
-                                }
-                            ]
-                        },
-                    ]
-                },
-                {
-                    path: '/projects',
-                    component: Projects,
-                    name: 'PROJECTS',
-                    leaf: true,
-                    children: [
-                        {
-                            path: '/projects/parent-child-club',
-                            component: ParentChildClub,
-                            name: 'PARENT - CHILD CLUB'
-                        },
-                        {
-                            path: '/projects/different-but-funny',
-                            component: Different,
-                            name: 'IT\'S DIFFERENT BUT FUNNY'
-                        },
-                        {
-                            path: '/projects/is-that-you',
-                            component: IsThatYou2,
-                            name: 'IS THAT YOU'
-                        }
-                    ]
-                },
-                {
-                    path: '/brand-story',
-                    component: BrandStory,
-                    name: 'ABOUT'
-                },
-                {
-                    path: '/contact',
-                    component: Contact,
-                    name: 'CONTACT'
-                }
-            ]
+            }
+          ]
         },
-    ]
+        {
+          path: '/collection',
+          component: Collection,
+          name: 'COLLECTIONS',
+          leaf: true,
+          children: [
+            {
+              path: '/collection/18fw',
+              component: AW2018,
+              name: '-18FW',
+              leaf: true,
+              children: [
+                {
+                  path: '/collection/18fw/looks',
+                  component: Looks,
+                  name: 'Looks'
+                },
+                {
+                  path: '/collection/18fw/shows',
+                  component: Shows,
+                  name: 'Shows'
+                },
+                {
+                  path: '/collection/18fw/video',
+                  component: Video,
+                  name: 'Video'
+                }
+              ]
+            },
+            {
+              path: '/collection/18ss',
+              component: SS2018,
+              name: '-18SS',
+              leaf: true,
+              children: [
+                {
+                  path: '/collection/18ss/looks',
+                  component: Looks,
+                  name: 'Looks'
+                },
+                {
+                  path: '/collection/18ss/shows',
+                  component: Shows,
+                  name: 'Shows'
+                },
+                {
+                  path: '/collection/18ss/video',
+                  component: Video,
+                  name: 'Video'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          path: '/projects',
+          component: Projects,
+          name: 'PROJECTS',
+          leaf: true,
+          children: [
+            {
+              path: '/projects/18ss',
+              component: ParentChildClub,
+              name: '-18SS',
+              children: [
+                {
+                  path: '/projects/18ss/kids-show',
+                  component: Looks,
+                  name: 'KIDS SHOW \n 移动照相馆'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          path: '/about',
+          component: BrandStory,
+          name: 'ABOUT'
+        },
+        {
+          path: '/contact',
+          component: Contact,
+          name: 'CONTACT'
+        }
+      ]
+    },
+  ]
 })

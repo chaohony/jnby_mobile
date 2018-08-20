@@ -61,14 +61,6 @@
           },
           {
             type: 0,
-            src: require("../../assets/image/campaign-18fw/09.png")
-          },
-          {
-            type: 0,
-            src: require("../../assets/image/campaign-18fw/09.png")
-          },
-          {
-            type: 0,
             src: require("../../assets/image/campaign-18fw/10.png")
           },
           {
