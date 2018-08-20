@@ -1,4 +1,4 @@
-# jnby_mobile
+# pengma_mobile
 
 > A Vue.js project
 
