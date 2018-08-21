@@ -92,7 +92,7 @@
         min-height: 34px;
         max-width: 100px;
         max-height: 100px;
-        border-radius: 50%;
+        /*border-radius: 50%;*/
         transition: width .5s ease-in-out, height .5s ease-in-out;
         overflow: hidden;
         background-color: transparent;

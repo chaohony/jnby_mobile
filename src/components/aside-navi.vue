@@ -1,6 +1,6 @@
 <template>
   <div class="aside">
-    <div class="btn-wrapper" @click="toggleAside" :class="{active: visible, inactive: !visible && flag}">
+    <div class="btn-wrapper" @click="toggleAside" :class="{active: visible, inactive: !visible && flag, black: black}">
       <span class="span-1"></span>
       <span class="span-2"></span>
       <span class="span-3"></span>
@@ -30,7 +30,7 @@
                        :class="{'second-item-active': !children.fold}">
                     <div class="second-route-children" v-for="(grandChildren, x) in children.children" :key="x"
                          @click.stop>
-                      <router-link :to="grandChildren.path">{{ grandChildren.name }}</router-link>
+                      <router-link :to="grandChildren.path" v-html="grandChildren.name"></router-link>
                     </div>
                   </div>
                 </div>
@@ -54,10 +54,18 @@
         default: true
       }
     },
+    watch: {
+      $route(n) {
+        let path = n.path
+        let flag = path === '/projects/18ss/kids-show'
+        this.makeBarBlack(flag)
+      }
+    },
     data() {
       return {
         routerList: [],
-        flag: false
+        flag: false,
+        black: false
       }
     },
     mounted() {
@@ -108,6 +116,13 @@
           } else {
             document.querySelector('.COLLECTIONS').style.height = this.height
           }
+        } else if (route.name === 'PROJECTS') {
+          if (route.fold) {
+            this.projectsHeight = document.querySelector('.PROJECTS').clientHeight + 'px'
+            document.querySelector('.PROJECTS').style.height = '0px'
+          } else {
+            document.querySelector('.PROJECTS').style.height = this.projectsHeight
+          }
         }
       },
       expandSecondRoute(children, route) {
@@ -120,7 +135,16 @@
             }
           }
           document.querySelector('.COLLECTIONS').style.height = (45 + count * 60) + 'px'
+        } else if (route.name === 'PROJECTS') {
+          if (children.fold) {
+            document.querySelector('.PROJECTS').style.height = 20 + 'px'
+          } else {
+            document.querySelector('.PROJECTS').style.height = 60 + 'px'
+          }
         }
+      },
+      makeBarBlack(flag) {
+        this.black = flag
       }
     }
   }
@@ -148,6 +172,12 @@
         height: 4px;
         transition: all .2s linear;
         background-color: #fff;
+
+      }
+      &.black {
+        span {
+          background-color: #000;
+        }
       }
       &.active {
         span {
@@ -185,7 +215,7 @@
           .router-item {
             position: relative;
             text-align: left;
-            text-indent: 40px;
+            padding-left: 40px;
             font-size: 17px;
             color: #fff;
             font-family: 'Avain-Bold';
@@ -198,7 +228,7 @@
               transition: height .2s ease-in-out;
               letter-spacing: 1px;
               .first-route-children {
-                  margin-top: 10px;
+                margin-top: 10px;
               }
               .second-route-children-wrapper {
                 height: 0;
@@ -209,7 +239,7 @@
                   color: #fff;
                   text-align: left;
                   margin-top: 8px;
-                  text-indent: 48px;
+                  padding-left: 8px;
                 }
                 &.second-item-active {
                   height: 60px;
@@ -219,7 +249,7 @@
             }
             &.router-item-active {
               .first-route-children-wrapper {
-                &.CAMPAIGN {
+                &.CAMPAIGNS {
                   height: 45px;
                 }
                 &.PROJECTS {
@@ -235,6 +265,9 @@
             }
           }
         }
+      }
+      .link-active {
+        color: rgb(231, 189, 52);
       }
     }
 

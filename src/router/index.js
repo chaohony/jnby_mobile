@@ -2,18 +2,19 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../page/index.vue'
 import Campaign from '../page/campaign.vue'
-import Collection from '../page/collection.vue'
+import Collections from '../page/collections.vue'
 import Projects from '../page/projects.vue'
-import BrandStory from '../page/brand-story.vue'
+import About from '../page/about.vue'
 import Contact from '../page/contact.vue'
-import CAMPAIGN18FW from '../page/campaign/campaign-18fw.vue'
-import IsThatYou from '../page/campaign/isThatYou.vue'
-import ParentChildClub from '../page/projects/parent-child-club.vue'
-import AW2018 from '../page/collection/AW2018.vue'
-import SS2018 from '../page/collection/SS2018.vue'
-import Looks from '../page/collection/looks.vue'
-import Shows from '../page/collection/shows.vue'
-import Video from '../page/collection/videos.vue'
+import Campaigns18FW from '../page/campaigns/campaigns-18fw.vue'
+import CAMPAIGNS18SS from '../page/campaigns/campaigns-18ss.vue'
+import Projects18SS from '../page/projects/projects-18ss.vue'
+import Collections18FW from '../page/collections/collections-18fw.vue'
+import Collections18SS from '../page/collections/collections-18ss.vue'
+import KidsShow from '../page/projects/kids-show.vue'
+import Looks from '../page/collections/looks.vue'
+import Shows from '../page/collections/shows.vue'
+import Video from '../page/collections/videos.vue'
 
 Vue.use(Router)
 
@@ -29,71 +30,71 @@ export default new Router({
         {
           path: '/campaign',
           component: Campaign,
-          name: 'CAMPAIGN',
+          name: 'CAMPAIGNS',
           leaf: true,
           children: [
             {
               path: '/campaign/18fw',
-              component: CAMPAIGN18FW,
+              component: Campaigns18FW,
               name: '-18FW'
             },
             {
               path: '/campaign/18ss',
-              component: IsThatYou,
+              component: CAMPAIGNS18SS,
               name: '-18SS'
 
             }
           ]
         },
         {
-          path: '/collection',
-          component: Collection,
+          path: '/collections',
+          component: Collections,
           name: 'COLLECTIONS',
           leaf: true,
           children: [
             {
-              path: '/collection/18fw',
-              component: AW2018,
+              path: '/collections/18fw',
+              component: Collections18FW,
               name: '-18FW',
               leaf: true,
               children: [
                 {
-                  path: '/collection/18fw/looks',
+                  path: '/collections/18fw/looks',
                   component: Looks,
-                  name: 'Looks'
+                  name: 'LOOKS'
                 },
                 {
-                  path: '/collection/18fw/shows',
+                  path: '/collections/18fw/shows',
                   component: Shows,
-                  name: 'Shows'
+                  name: 'SHOW'
                 },
                 {
-                  path: '/collection/18fw/video',
+                  path: '/collections/18fw/video',
                   component: Video,
-                  name: 'Video'
+                  name: 'VIDEO'
                 }
               ]
             },
             {
-              path: '/collection/18ss',
-              component: SS2018,
+              path: '/collections/18ss',
+              component: Collections18SS,
               name: '-18SS',
               leaf: true,
               children: [
                 {
-                  path: '/collection/18ss/looks',
+                  path: '/collections/18ss/looks',
                   component: Looks,
-                  name: 'Looks'
+                  name: 'LOOKS'
                 },
                 {
-                  path: '/collection/18ss/shows',
+                  path: '/collections/18ss/shows',
                   component: Shows,
-                  name: 'Shows'
+                  name: 'SHOW'
                 },
                 {
-                  path: '/collection/18ss/video',
+                  path: '/collections/18ss/video',
                   component: Video,
-                  name: 'Video'
+                  name: 'VIDEO'
                 }
               ]
             }
@@ -107,13 +108,14 @@ export default new Router({
           children: [
             {
               path: '/projects/18ss',
-              component: ParentChildClub,
+              component: Projects18SS,
               name: '-18SS',
+              leaf: true,
               children: [
                 {
                   path: '/projects/18ss/kids-show',
-                  component: Looks,
-                  name: 'KIDS SHOW \n 移动照相馆'
+                  component: KidsShow,
+                  name: 'KIDS SHOW <div style="height: 5px;"></div> 移动照相馆'
                 }
               ]
             }
@@ -121,7 +123,7 @@ export default new Router({
         },
         {
           path: '/about',
-          component: BrandStory,
+          component: About,
           name: 'ABOUT'
         },
         {
@@ -131,5 +133,6 @@ export default new Router({
         }
       ]
     },
-  ]
+  ],
+  linkActiveClass: 'link-active'
 })
